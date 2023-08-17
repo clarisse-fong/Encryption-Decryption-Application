@@ -7,7 +7,7 @@ describe("substitution", ()=>{
         const response1 = substitution("cab","abcdefg")
         expect(response1).false;
         
-        const response2 = substitution("yellow", "abcdefghijklmnopqrstuvwyxz!23456")
+        const response2 = substitution("yellow", "abcdefghijklmnopqrstuvwyxz!23456", false)
         expect(response2).false;
     })
 
@@ -19,17 +19,18 @@ describe("substitution", ()=>{
         const response2 = substitution("elephant", 
         "!1@2#4$5%6^7&8*9(0)abcdert");
         expect(response2).to.equal("#7#95!8a");
+
+        const response3 = substitution("#7#95!8a", "!1@2#4$5%6^7&8*9(0)abcdert", false)
     })
 
     it("it returns false if there are any duplicate characters in the given alphabet",()=>{
         const response1 = substitution("happy", "123456789abcdefghijklqqqqq");
-
         expect(response1).false;
 
         const response2 = substitution("happy", "111156789abcdefghijklmnopq");
         expect(response2).false;
 
-        const response3 = substitution("happy", "!1@2#4$5%6^&&&*9(0)abcdert");
+        const response3 = substitution("happy", "!1@2#4$5%6^&&&*9(0)abcdert", false);
         expect(response3).false;
 
     })
@@ -50,6 +51,9 @@ describe("substitution", ()=>{
 
         const response2 = substitution("IAMAHAPPYELEPHANT", "!1@2#4$5%6^7&8*9(0)abcdert")
         expect(response2).to.equal("%!&!5!99r#7#95!8a")
+
+        const response3 = substitution("%!&!5!99r#7#95!8a", "!1@2#4$5%6^7&8*9(0)abcdert", false);
+        expect(response3).to.equal("IAMAHAPPYELEPHANT");
 
     })
 })

@@ -11,7 +11,10 @@ describe ("caesar", ()=>{
         expect(response2).false
 
         const response3 = caesar("bonsoir", 610)
-        expect(response2).false
+        expect(response3).false
+
+        const response4 = caesar("bonsoir", 610, false)
+        expect(response4).false
 
 
 
@@ -24,7 +27,8 @@ describe ("caesar", ()=>{
         const response2 = caesar("BonSoIr", 3);
         expect(response2).to.equal("erqvrlu")
 
-
+        const response3 = caesar("BoNSoIr", 3, false);
+        expect(response3).to.equal("ylkplfo")
 
     })
 

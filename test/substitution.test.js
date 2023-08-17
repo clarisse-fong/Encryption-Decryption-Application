@@ -53,7 +53,7 @@ describe("substitution", ()=>{
         expect(response2).to.equal("%!&!5!99r#7#95!8a")
 
         const response3 = substitution("%!&!5!99r#7#95!8a", "!1@2#4$5%6^7&8*9(0)abcdert", false);
-        expect(response3).to.equal("IAMAHAPPYELEPHANT");
+        expect(response3).to.equal("iamahappyelephant");
 
     })
 })

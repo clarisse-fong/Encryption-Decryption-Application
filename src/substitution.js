@@ -33,10 +33,10 @@ const substitutionModule = (function () {
       }
     }
     
-    return encode ? translator(input, regAlphabet, alphabet) : translator(input, alphabet, regAlphabet)  
+    return encode ? substitutionTranslator(input, regAlphabet, alphabet) : substitutionTranslator(input, alphabet, regAlphabet)  
   }
 
-  function translator (input, currAlphabet, newAlphabet) {
+  function substitutionTranslator (input, currAlphabet, newAlphabet) {
     let output = "";
     
     for (let i = 0; i < input.length; i ++) {

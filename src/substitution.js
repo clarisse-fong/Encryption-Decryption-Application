@@ -8,21 +8,21 @@ const substitutionModule = (function () {
 
   function substitution(input, alphabet, encode = true) {
     //PARAMS:
-      //input(string) - text to be encoded or decoded
-      //alphabet(string)- substitution alphabet
-      //encode(boolean) - whether to encode or decode
-  
+    //input(string) - text to be encoded or decoded
+    //alphabet(string)- substitution alphabet
+    //encode(boolean) - whether to encode or decode
+
     if (!alphabet || alphabet.length != 26) return false;
     //alphabet.length MUST be 25 or return false
-    
+
     //all letters in alphabet MUST be unique or return false
     //create an object. iterate through all of the elements in the alphabet.
     const regAlphabet = "abcdefghijklmnopqrstuvwxyz";
-    const subAlphabetLookup = {} //
-    
-    //for each elem in alphabet, check if it exists in the object. 
+    const subAlphabetLookup = {}; //
+
+    //for each elem in alphabet, check if it exists in the object.
     for (let i = 0; i < alphabet.length; i++) {
-      //If it exists, return false, 
+      //If it exists, return false,
       const currChar = alphabet.charAt(i);
 
       if (subAlphabetLookup[currChar]) {
@@ -32,27 +32,26 @@ const substitutionModule = (function () {
         subAlphabetLookup[currChar] = i;
       }
     }
-    
-    return encode ? substitutionTranslator(input, regAlphabet, alphabet) : substitutionTranslator(input, alphabet, regAlphabet)  
+
+    return encode
+      ? substitutionTranslator(input, regAlphabet, alphabet)
+      : substitutionTranslator(input, alphabet, regAlphabet);
   }
 
-  function substitutionTranslator (input, currAlphabet, newAlphabet) {
+  function substitutionTranslator(input, currAlphabet, newAlphabet) {
     let output = "";
-    
-    for (let i = 0; i < input.length; i ++) {
+
+    for (let i = 0; i < input.length; i++) {
       const currChar = input.charAt(i);
       //IF its a space
       if (currChar === " ") {
         //add space to the output
         output += " ";
-
       } else {
         const currAlphIndex = currAlphabet.indexOf(currChar.toLowerCase());
-        const newChar = newAlphabet.charAt(currAlphIndex)
-        output += newChar
+        const newChar = newAlphabet.charAt(currAlphIndex);
+        output += newChar;
       }
-
-
     }
 
     return output;

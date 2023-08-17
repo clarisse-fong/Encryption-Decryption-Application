@@ -1,5 +1,5 @@
 const { expect } = require("chai");
-const { substitution } = require("../src/substitution");
+const { substitution } = require("../src/substitution.js");
 
 describe("substitution() submission tests written by Thinkful", () => {
   describe("error handling", () => {

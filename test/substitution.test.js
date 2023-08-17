@@ -39,7 +39,7 @@ describe("substitution", ()=>{
         const response1 = substitution("i am a happy elephant", "!1@2#4$5%6^7&8*9(0)abcdert")
         expect(response1).to.equal("% !& ! 5!99r #7#95!8a")
 
-        const response2 = substitution("% !& ! 5!99e #7e95!8a", "!1@2#4$5%6^7&8*9(0)abcdert", false)
+        const response2 = substitution("% !& ! 5!99r #7#95!8a", "!1@2#4$5%6^7&8*9(0)abcdert", false)
         expect(response2).to.equal("i am a happy elephant")
 
     })

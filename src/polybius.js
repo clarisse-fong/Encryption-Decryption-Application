@@ -47,7 +47,6 @@ const polybiusModule = (function () {
 				 
 	//ELSE DECODING
 	} else {
-		
 			//for loop that iterates by 2 
       for (let i = 0; i < input.length; i += 2 ) {
         let firstChar = input.charAt(i);

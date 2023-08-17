@@ -28,51 +28,45 @@ const caesarModule = (function () {
       //iterate through each of the letters in the input
       for (let i=0; i < lowerCaseInput.length; i++) {
         let originalChar = lowerCaseInput.charAt(i);
-        let newChar;
-        
-        //maintain spaces in translation(& other nonalphabetic symbols). aka stays the same
-        if (!lookup.includes(originalChar)) {
-            newChar = originalChar;
-    
-        } else {
-            // console.log("originalChar",originalChar);
-            //find the alphabet index of the letter using lookup, store in variable j
-                //index of
-            const originalCharIndex = lookup.indexOf(originalChar);
-            // set var newIndex = j + shiftz
-            //var shift = 
-                  //if encode is false, then take the negative of shift. Otherwise leave it alone. This encompasses this logic: 
-                  //if shift is positive and encode is true, go right ("Thinkful", 3, True) //> 'wklqnixo'
-                  //if shift is positive and encode is false, go left ("wklqnixo", 3, false) //> 'thinkful'
-                  //if shift is negative and encode is true, go left ("Thinkful", -3, True) //> 'qefkhcri'
-                  //if shift is negative and encode is false, go right ("qefkhcri, -3, False") //> 'thinkful'
-            // identify the char at the new index in lookup and add to output
-            let newCharIndex = originalCharIndex + formula;
-
-            //if alphabet shifted "off" wrap around
-            //if char goes below a, do this:
-            if (newCharIndex < 0) {
-              // newIndex + 25
-              newCharIndex += 26;
-
-            } 
-            //if char goes below z, do this:
-            if (newCharIndex > 25) {
-                //newIndex - 25
-                newCharIndex -= 26;
-            }
-            
-            //text.charAt
-            newChar = lookup.charAt(newCharIndex);
-        }
-        output += newChar;
+        output += translateCharCaesar(originalChar, lookup, formula);
     }
 
     return output;
 
   }
 
-  console.log(caesar("zebra magazine", 3))
+  function findCharAt(charIndex, lookup) {
+    if (charIndex < 0) {
+      // newIndex + 25
+      charIndex += 26;
+    } 
+    //if char goes below z, do this:
+    if (charIndex > 25) {
+        //newIndex - 25
+        charIndex -= 26;
+    }
+    return lookup.charAt(charIndex);
+  }
+
+  function translateCharCaesar(originalChar, lookup, formula) {
+    if (!lookup.includes(originalChar)) {
+      return originalChar;
+
+  } else {
+      //find the alphabet index of the letter using lookup, store in variable j
+      const originalCharIndex = lookup.indexOf(originalChar);
+
+      // identify the char at the new index in lookup and add to output
+      let newCharIndex = originalCharIndex + formula;
+
+      //if alphabet shifted "off" wrap around
+      //if char goes below a, do this:
+      return findCharAt(newCharIndex, lookup);
+    }
+    
+
+  }
+
 
   return {
     caesar,

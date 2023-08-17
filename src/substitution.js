@@ -24,6 +24,7 @@ const substitutionModule = (function () {
     for (let i = 0; i < alphabet.length; i++) {
       //If it exists, return false, 
       const currChar = alphabet.charAt(i);
+
       if (subAlphabetLookup[currChar]) {
         return false;
         //if not add it to the object
@@ -32,64 +33,30 @@ const substitutionModule = (function () {
       }
     }
     
+    return encode ? translator(input, regAlphabet, alphabet) : translator(input, alphabet, regAlphabet)  
+  }
+
+  function translator (input, currAlphabet, newAlphabet) {
     let output = "";
-    //ENCODING
-    if (encode) {
-      //.tolowercase
+    
+    for (let i = 0; i < input.length; i ++) {
+      const currChar = input.charAt(i);
+      //IF its a space
+      if (currChar === " ") {
+        //add space to the output
+        output += " ";
 
-      // for each elem in the input
-      for (let j = 0; j < input.length; j ++) {
-        const currChar = input.charAt(j);
-        //IF its a space
-        if (currChar === " ") {
-          //add space to the output
-          output += " ";
-          
-        //ELSE
-        } else {
-          // find the index of the currChar using indexOf regAlphabet
-          const regAlphIndex = regAlphabet.indexOf(currChar.toLowerCase());
-
-          // find the subchar using the charAt(foundIndex) in the subAlphabetLookup
-          const subchar = alphabet.charAt(regAlphIndex);
-
-          // add sub char to output (output += subchar)
-          output += subchar
-        }
+      } else {
+        const currAlphIndex = currAlphabet.indexOf(currChar.toLowerCase());
+        const newChar = newAlphabet.charAt(currAlphIndex)
+        output += newChar
       }
-      
-      //DECODING
-    } else {
-      //.tolowercase
-        // for each elem in the input
-        for (let j = 0; j < input.length; j++) {
-          //IF its a space
-          const currChar = input.charAt(j)
-          if (currChar === " ") {
-            //add space to the output
-            output += " ";
-          
-          //ELSE
-          } else {
-            // find the regular alphabet char of currChar using the subAlphabetLookup
-            const subCharIndex = subAlphabetLookup[currChar.toLowerCase()]
-            const regAlphChar = regAlphabet.charAt(subCharIndex);
-            output += regAlphChar;
-        }
-      }
-      // given the index, use charAt(foundIndex) on regAlphabet to find its sub char
-      // add sub char to output (output += subchar)
-      
+
+
     }
 
     return output;
-      
-      //inputs could include spaces, letters, and special texts
-    //spaces should be maintained throughout
-    //capital letters can be ignored
   }
-
-
   return {
     substitution,
   };

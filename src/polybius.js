@@ -75,14 +75,6 @@ const polybiusModule = (function () {
 
   }
 
-  // console.log("test1: ", polybius("thinkful"),"4432423352125413");
-  // console.log("test2: ", polybius("Hello world"), '3251131343 2543241341');
-  
-  // console.log("test3: ", polybius("3251131343 2543241341", false), "hello world" );
-  // console.log("test4: ",polybius("4432423352125413", false), "th(i/j)nkful");
-  
-  // console.log("testThinkful1:", polybius("message"));
-
   return {
     polybius,
   };

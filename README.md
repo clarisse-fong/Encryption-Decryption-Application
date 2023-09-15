@@ -1,2 +1,7 @@
-# decoder-ring
-This is my second project in the Thinkful Bootcamp. This project focuses on creating 3 methods of encoding/decoding messages and creating tests for these functions using mocha/chai. 
+# Encryption/Decryption Application
+* Built out an application that takes user inputs and encodes them into secret messages using several encoding algorithms
+* Implemented feature to decode encoded messages
+
+
+Technology: Javascript ES6, HTML5, Node.js
+
